@@ -5,21 +5,35 @@ class Deck {
   cards = [];
 
   constructor() {
+    this.createNewDeck();
+  }
+
+  createNewDeck = () => {
     this.suits.forEach((suit) => {
       this.numbers.forEach((face) => {
         this.cards.push(face + suit);
       });
     });
-  }
+  };
 
-  dispatchCards(size) {
+  getNewHand = (size) => {
     return new Array(size)
       .fill()
       .map(
         () =>
           this.cards.splice(parseInt(Math.random() * this.cards.length), 1)[0]
       );
-  }
+  };
+
+  dispatchCards = (size) => {
+    if (this.cards.length > 2) {
+      return this.getNewHand(size);
+    } else {
+      this.cards = [];
+      this.createNewDeck();
+      return this.getNewHand(size);
+    }
+  };
 }
 
 class Hand {

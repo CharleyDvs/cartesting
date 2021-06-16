@@ -1,9 +1,51 @@
+body {
+  background-color: #000;
+  color: #f4f4f4;
+}
+
 .d-flex {
   display: flex;
   flex-flow: row;
 }
 
 h2,
-h3 {
+h3,
+p {
   margin: 8px;
+}
+
+button {
+  transition: all ease 0.5s;
+  cursor: pointer;
+  background-color: transparent;
+  border: 2px solid #f4f4f4;
+  margin: 1rem;
+  padding: 1rem 2rem;
+  color: #f4f4f4;
+  border-radius: 8px;
+}
+
+button:hover {
+  transform: scale(1.1);
+}
+
+button:active {
+  transform: scale(0.9);
+}
+
+h3 {
+  text-transform: capitalize;
+  padding: 0.5rem;
+}
+
+ul li {
+  list-style: none;
+  padding: 0.2rem;
+}
+
+.deck ul {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  max-height: 300px;
 }
