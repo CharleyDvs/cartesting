@@ -9,6 +9,7 @@ class Deck {
   }
 
   createNewDeck = () => {
+    this.cards = [];
     this.suits.forEach((suit) => {
       this.numbers.forEach((face) => {
         this.cards.push(face + suit);
@@ -29,7 +30,6 @@ class Deck {
     if (this.cards.length > 2) {
       return this.getNewHand(size);
     } else {
-      this.cards = [];
       this.createNewDeck();
       return this.getNewHand(size);
     }
