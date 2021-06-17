@@ -6,12 +6,39 @@ const app = express();
 
 const PORT = 4040;
 
+app.use(express.json());
+
 const deck = new Deck();
+// const tableHand = deck.getNewHand(5);
 
 app.use(express.static('public'));
 
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, '/index.html'));
+});
+
+app.get('/get-table-hand', (req, res) => {
+  res.json({
+    tableHand,
+  });
+});
+
+app.get('/get-hand/:size', (req, res) => {
+  const { size } = req.params;
+  const playerHand = new Hand(deck, parseInt(size));
+  res.json({
+    playerHand,
+    tableHand,
+  });
+});
+
+app.post('/player', (req, res) => {
+  const {
+    body: { user },
+  } = req;
+  res.json({
+    user,
+  });
 });
 
 app.get('/play', (req, res) => {
